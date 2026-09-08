@@ -85,3 +85,11 @@ signs/notarizes, creates the GitHub Release, and updates the Homebrew cask. See
 - `bin/endelito debug` writes page inspection data next to the state file.
 - Soundscape IDs and aliases live in `internal/sources/sources.json`; update that catalog instead of duplicating lists in Go or Swift.
 - Build artifacts are ignored by git.
+
+## Dependency automerge
+
+- Eligible Renovate updates use GitHub auto-merge after required checks: verify and scan / Gitleaks, scan / TruffleHog, scan / Actionlint, scan / Zizmor.
+- Checks are non-strict; repository admins and the existing release App retain direct writes through
+  a bypass limited to the check ruleset. Renovate has no bypass.
+- Shared release-age and major/digest rules remain unchanged. Add new voting
+  checks to the ruleset; workflow presence alone does not require them.

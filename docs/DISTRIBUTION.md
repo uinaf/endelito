@@ -87,8 +87,9 @@ writeback:
   non-fast-forward updates; require signed commits without a release App bypass.
 - Ruleset `protect-release-tags` on `refs/tags/v*`: block tag deletion and
   updates; require signed tags. `uinaf-releaser` may bypass.
-- No required status checks, pull-request reviews, or push restrictions that
-  would block signed release-version writeback to `main`.
+- Required verification and scan checks use a separate non-strict ruleset.
+  Admins and `uinaf-releaser` bypass only this check rule, preserving signed
+  release-version writeback. Renovate has no bypass.
 - Actions policy: selected actions only; allow GitHub-owned actions, verified
   actions, `actions/create-github-app-token@*`,
   `cycjimmy/semantic-release-action@*`,
@@ -104,9 +105,8 @@ writeback:
 - Notarization variables: `APPLE_NOTARY_API_KEY_ID` and
   `APPLE_NOTARY_API_ISSUER_ID`.
 
-See [Releases](RELEASES.md) for the publish contract. Do not add required status
-checks, pull-request reviews, push restrictions, or a PR-required ruleset unless
-the semantic-release writeback path is redesigned first.
+See [Releases](RELEASES.md) for the publish contract. Keep its signed writeback
+path working when changing repository rules.
 
 ## Workflow Maintenance
 

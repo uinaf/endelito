@@ -68,3 +68,6 @@ update failed, the rerun skips release mutation and resumes at the tap update.
 
 Never delete or move a published `v*` tag. Published releases and their assets
 are immutable; only an unpublished draft may be repaired or deleted.
+
+Required checks preserve release-App writeback through the scoped bypass in
+[GitHub policy](DISTRIBUTION.md#github-policy).
